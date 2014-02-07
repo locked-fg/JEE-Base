@@ -1,7 +1,5 @@
-package de.locked.bob.server.cfg;
+package de.locked.jeebase;
 
-import de.locked.bob.server.service.AuthService;
-import de.locked.bob.server.service.FreeService;
 import java.util.HashSet;
 import java.util.Set;
 import javax.servlet.annotation.WebServlet;
@@ -15,8 +13,7 @@ public class MyApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         Set<Class<?>> s = new HashSet<>();
-        s.add(FreeService.class);
-        s.add(AuthService.class);
+        s.add(MyService.class);
         return s;
     }
 }
