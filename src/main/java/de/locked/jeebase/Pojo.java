@@ -16,19 +16,17 @@
 package de.locked.jeebase;
 
 import java.util.Date;
-import javax.xml.bind.annotation.XmlRootElement;
 
-//@XmlRootElement
-public class MyPojo {
+public class Pojo {
 
     private String foo;
     private long bar;
     private Date fooBar;
 
-    public MyPojo() {
+    public Pojo() {
     }
 
-    public MyPojo(String foo, long bar, Date fooBar) {
+    public Pojo(String foo, long bar, Date fooBar) {
         this.foo = foo;
         this.bar = bar;
         this.fooBar = fooBar;

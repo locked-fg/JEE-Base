@@ -19,16 +19,22 @@ import com.sun.jersey.api.core.PackagesResourceConfig;
 import static com.sun.jersey.api.core.ResourceConfig.FEATURE_CANONICALIZE_URI_PATH;
 import static com.sun.jersey.api.core.ResourceConfig.FEATURE_REDIRECT;
 import com.sun.jersey.api.json.JSONConfiguration;
+import javax.servlet.annotation.WebServlet;
+import javax.ws.rs.ApplicationPath;
+import org.codehaus.jackson.jaxrs.JacksonJsonProvider;
 
-
+@WebServlet(loadOnStartup = 1)
+@ApplicationPath("api")
 public class MyResourceConfig extends PackagesResourceConfig {
 
     public MyResourceConfig() {
+        // super("de.locked.jeebase");
+        super(MyResourceConfig.class.getPackage().getName());
         getFeatures().put(FEATURE_CANONICALIZE_URI_PATH, Boolean.TRUE);
         getFeatures().put(FEATURE_REDIRECT, Boolean.TRUE);
 
-        // possibily need Jackson dependencies to work!!!
-//        getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
+        getClasses().add(JacksonJsonProvider.class);
+        getFeatures().put(JSONConfiguration.FEATURE_POJO_MAPPING, true);
     }
 
 }

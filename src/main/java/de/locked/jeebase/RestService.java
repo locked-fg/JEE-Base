@@ -24,25 +24,25 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @Path("/")
-public class MyService {
+public class RestService {
 
-    private static final Logger log = Logger.getLogger(MyService.class.getName());
+    private static final Logger log = Logger.getLogger(RestService.class.getName());
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("endpointGet")
-    public MyPojo get() {
+    @Path("getaction")
+    public Pojo get() {
         long ts = System.currentTimeMillis() + 45 * 86_400;
-        return new MyPojo("Answer from Server", 1_000L, new Date(ts));
+        return new Pojo("Answer from Server", 1_000L, new Date(ts));
     }
 
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("endpoint")
-    public MyPojo post(MyPojo in) {
+    @Path("postaction")
+    public Pojo post(Pojo in) {
         log.info("Object via Rest -> " + in.toString());
         long ts = System.currentTimeMillis() + 45 * 86_400;
-        return new MyPojo("Answer from Server", 1_000L, new Date(ts));
+        return new Pojo("Answer from Server", 1_000L, new Date(ts));
     }
 
 }
